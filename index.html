@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Harly's Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="/function.js"></script>
+</head>
+<body>
+
+  <div id="loading-phase">
+    <h1 id="loadHeader">Loading Files</h1>
+    <div id="logs"></div>
+    <button id="try-again-button" style="display: none;">Try Again</button>
+  </div>
+
+  <div id="content" style="height: 100%;display: none;">
+    <div id="alertBox" class="alert-box">
+      Welcome to my Website!
+    </div>
+    <div id="loading" class="content" style="height: 100%;display: none;">
+      <div class="home" style="height: 100%;">
+        <span class="loader"></span>
+      </div>
+    </div>
+  
+    <video id="bg-video" autoplay loop muted>
+      <source src="/video/bgv.mp4">
+    </video>
+  
+    <div id="sidebar">
+      <ul class="icon-list">
+        <li onclick="home()"><i class="fas fa-home"></i> Home</li>
+        <li onclick="about()"><i class="fas fa-info-circle"></i> About</li>
+        <li id="preloadProject"><i class="fas fa-folder-open"></i> Project</li>
+        <li id="preloadContact"><i class="fas fa-envelope"></i> Contact</li>
+      </ul>
+    </div>
+      
+    <div id="home" class="content" style="height: 100%;">
+      <div id="spamButton" class="music">
+        <i class="fas fa-music music-icon"></i>
+        <span id="spamContent" class="tooltip">Muted</span>
+        <audio id="myAudio" src="/audio/bgm.mp3" loop></audio>
+      </div>      
+      
+      <div class="home" style="height: 100%;">
+        <div class="container">
+          <img src="/photos/profile.png" alt="Image" class="image">
+          <div class="text">
+            <h3 style="color: rgb(105, 105, 105);">hello there i am</h3>
+            <h1 style="font-size: 50px;margin-bottom: 0px;">HARLY KHEN QUIMELAT</h1>
+            <h3 style="color: rgb(105, 105, 105);">a <a style="color: white;">computer science student</a> and aspiring <a style="color: white;">software engineer!</a></h3>
+            <br>
+            <div class="skillBox">
+              <div class="skillColumn">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="skillColumn">
+                <i class="fab fa-css3"></i>
+              </div>
+              <div class="skillColumn">
+                <i class="fab fa-js"></i>
+              </div>
+              <div class="skillColumn">
+                <i class="fab fa-php"></i>
+              </div>
+              <div class="skillColumn">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="skillColumn">
+                <i class="fab fa-linux"></i>
+              </div>
+              <div class="skillColumn">
+                <i class="fab fa-java"></i>
+              </div>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="about" class="content" style="height: 100%;display: none;">
+      <h3 id="portfolio" style="color: rgb(105, 105, 105);">wanna learn more about me</h3>
+      <h1 style="font-size: 50px;margin-bottom: 0px;">
+        <span>ABOUT</span>
+      </h1>
+      <br>
+      <h4 style="color: rgb(105, 105, 105);">
+        i love learning programming, read books, anime, hacking, play games, <br>
+        edit videos/image and most importantly is being alone.
+      </h4>
+      <br>
+      <br>
+      <h3 id="portfolio">MY COMPUTER SKILLS</h3>
+      <ul class="skills">
+        <div class="column">
+          <li class="skill"><i class="fab fa-html5"></i> HTML</li>
+          <li class="skill"><i class="fab fa-css3-alt"></i> CSS</li>
+          <li class="skill"><i class="fab fa-js"></i> JavaScript</li>
+        </div>
+        <div class="column">
+          <li class="skill"><i class="fab fa-php"></i> PHP</li>
+          <li class="skill"><i class="fas fa-database"></i> MySQL</li>
+          <li class="skill"><i class="fab fa-linux"></i> Linux Command Line</li>
+        </div>
+        <div class="column">
+          <li class="skill"><i class="fas fa-image"></i> Image Editing</li>
+          <li class="skill"><i class="fas fa-video"></i> Video Editing</li>
+        </div>
+      </ul>
+    </div>
+  
+    <div id="project" class="content" style="display: none;">
+      <h3 id="portfolio" style="color: rgb(105, 105, 105);">some of my recent works</h3>
+      <h1 style="font-size: 50px;margin-bottom: 0px;">
+        <span>PROJECTS</span>
+      </h1>
+      <div class="projCont">
+        <div class="box">
+          <img class="projImg" src="/photos/projects.png">
+          <div class="description">
+            My patched version of suckless dynamic window manage.
+          </div>
+        </div>
+        <div class="box">
+          <img class="projImg" src="/photos/project-2.png">
+          <div class="description">
+            A game that i made based on the things i remember to my dreams.
+          </div>
+        </div>
+        <div class="box">
+          <div class="projImg"></div>
+            <div class="description">Box 3 Description</div>
+        </div>
+      </div>
+    </div>
+  
+    
+  
+  
+  
+  
+    <div id="contacts" class="content" style="display: none;padding: 0px;overflow-y: hidden;">
+      <div class="grid-container">
+        <div class="column1">
+          <h3 id="portfolio" style="color: rgb(105, 105, 105);">want to get in touch</h3>
+          <h1 style="font-size: 50px;margin-bottom: 0px;">
+            <span>CONTACT</span>
+          </h1><br>
+          <div class="input-wrapper">
+            <button style="margin-bottom: 50px;margin-right: 10px;">
+              <img src="/svg/icons8-github-100.png" style="width: 100%; padding: 10px 30px 10px 30px">
+              Github
+            </button>
+            <button style="margin-bottom: 50px;margin-right: 10px;">
+              <img src="/svg/icons8-linkedin-100.png" style="width: 100%; padding: 10px 30px 10px 30px">
+              Linkdin
+            </button>
+            <button style="margin-bottom: 50px;">
+              <img src="/svg/icons8-facebook-100.png" style="width: 100%; padding: 10px 30px 10px 30px">
+              Facebook
+            </button>
+          </div>
+          <div class="input-wrapper" style=" display: flex;">
+            <input class="input" style="margin-bottom: 10px;margin-right: 10px;" type="text" id="my-text-field" name="name" placeholder="USERNAME">
+            <input class="input" style="margin-bottom: 10px;" type="text" id="my-text-field" name="name" placeholder="EMAIL">
+          </div>
+          <input class="input" style="margin-bottom: 10px;" type="text" id="my-text-field" name="name" placeholder="SUBJECT">
+          <textarea class="input" style="height: 300px;" name="message" placeholder="MESSAGE"></textarea>
+        </div>
+        <div class="column2"></div>
+      </div>
+    </div>
+          <!-- <h1 id="portfolio">Portfolio</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit risus ut urna semper, at lacinia ex fringilla. Quisque cursus, ipsum et gravida tristique, erat lacus sodales lacus, ut posuere odio felis vitae ligula.</p> -->
+  </div>
+</body>
+</html>
