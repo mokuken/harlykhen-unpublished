@@ -118,7 +118,7 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   border-right: 3px solid black;
-  background-image: url('/photos/side-bg.PNG');
+  background-image: url('/photos/side-bg.webp');
   animation: slideRight 1s ease-in-out forwards;
 }
 
@@ -231,7 +231,6 @@ p {
   }  
   
   .image {
-    width: 200px; /* Adjust the width as needed */
     border: 3px solid black;
     background-color: #262a2b;
   }
@@ -260,7 +259,7 @@ p {
 
   .column2 {
     /* Additional styles for the right column */
-    background-image: url('/photos/map.png');
+    background-image: url('/photos/map.webp');
     background-size: cover;
     background-position: center;
     opacity: 70%;

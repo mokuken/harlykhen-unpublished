@@ -30,8 +30,8 @@ function about() {
 function preloadProjectContent() {
     // Array of image URLs to preload
     var projectContent = [
-      "/photos/projects.png",
-      "/photos/project-2.png"
+      "/photos/projects.webp",
+      "/photos/project-2.webp"
     ];
   
     var imagesLoaded = 0;
@@ -71,7 +71,7 @@ function preloadProjectContent() {
   function preloadContactContent() {
     // Array of image URLs to preload
     var contactContent = [
-      "/photos/map.png"
+      "/photos/map.webp"
     ];
   
     var imagesLoaded = 0;
@@ -120,10 +120,10 @@ window.addEventListener('load', function() {
   const files = [
     { url: '/video/bgv.mp4', type: 'video' },
     { url: '/audio/bgm.mp3', type: 'audio' },
-    { url: '/photos/profile.png', type: 'image' },
-    { url: '/svg/icons8-facebook-100.png', type: 'image' },
-    { url: '/svg/icons8-github-100.png', type: 'image' },
-    { url: '/svg/icons8-linkedin-100.png', type: 'image' },
+    { url: '/photos/profile.webp', type: 'image' },
+    { url: 'photos/facebook.webp', type: 'image' },
+    { url: '/photos/github.webp', type: 'image' },
+    { url: '/photos/linkedin.webp', type: 'image' },
     '/styles.css',
     // Add more files here
   ];
