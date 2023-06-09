@@ -287,6 +287,7 @@ p {
   #loading-phase {
     display: flex;
     flex-direction: column;
+    background-color: #262a2b;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -295,6 +296,7 @@ p {
   #logs {
     margin-top: 10px;
     font-family: monospace;
+    background-color: #191b1c;
     border: 3px solid black;
     padding: 15px;
     width: 40%;
