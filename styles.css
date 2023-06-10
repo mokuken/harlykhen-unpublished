@@ -319,7 +319,7 @@ p {
     height: 40px;
     position: relative;
     display: inline-block;
-    --base-color: #263238; /*use your base color*/
+    --base-color: #191b1c; /*use your base color*/
   }
   .loader::before {
     content: '';  
