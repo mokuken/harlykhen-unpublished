@@ -133,12 +133,18 @@ window.addEventListener('load', function() {
     // Add more links here
   ];
 
-  function displayLog(log) {
-    const logElement = document.createElement('p');
+  function displayLog(log, file) {
+    var logElement = document.createElement('p');
     logElement.textContent = log;
+    if (file) {
+      var fileElement = document.createElement('span');
+      fileElement.textContent = ': ' + file;
+      logElement.appendChild(fileElement);
+    }
     logs.appendChild(logElement);
     logs.scrollTop = logs.scrollHeight; // Scroll to the bottom
   }
+  
 
   async function loadFile(file) {
     const url = file.url || file;
@@ -162,50 +168,71 @@ window.addEventListener('load', function() {
     }
   }
 
-  async function loadFiles() {
+  function loadFiles() {
     displayLog('Loading files and links...');
-    const filePromises = files.map(async function(file) {
-      try {
-        let response;
-        if (file.type === 'video') {
-          response = await loadVideo(file);
-        } else if (file.type === 'audio') {
-          response = await loadAudio(file);
-        } else if (file.type === 'image') {
-          response = await loadImage(file);
-        } else {
-          response = await loadFile(file);
-        }
-        displayLog(`Loaded: ${file.url || file}`);
-        return response;
-      } catch (error) {
-        displayLog(`Error loading: ${file.url || file}`);
-        throw error;
+    var filePromises = files.map(function(file) {
+      if (file.type === 'video') {
+        return loadVideo(file).then(function(response) {
+          displayLog('Loaded', file.url);
+          return response;
+        }).catch(function(error) {
+          displayLog('Error loading', file.url);
+          throw error;
+        });
+      } else if (file.type === 'audio') {
+        return loadAudio(file).then(function(response) {
+          displayLog('Loaded', file.url);
+          return response;
+        }).catch(function(error) {
+          displayLog('Error loading', file.url);
+          throw error;
+        });
+      } else if (file.type === 'image') {
+        return loadImage(file).then(function(response) {
+          displayLog('Loaded', file.url);
+          return response;
+        }).catch(function(error) {
+          displayLog('Error loading', file.url);
+          throw error;
+        });
+      } else {
+        return loadFile(file).then(function(response) {
+          displayLog('Loaded', file);
+          return response;
+        }).catch(function(error) {
+          displayLog('Error loading', file);
+          throw error;
+        });
       }
     });
-
-    const linkPromises = links.map(async function(link) {
-      try {
-        await loadLink(link);
-        displayLog(`Source Link Loaded: ${link}`);
-      } catch (error) {
+  
+    var linkPromises = links.map(function(link) {
+      return loadLink(link).then(function() {
+        displayLog('Source Link Loaded', link);
+      }).catch(function(error) {
         displayLog(error);
         throw error;
+      });
+    });
+  
+    Promise.allSettled(filePromises.concat(linkPromises)).then(function(results) {
+      var hasError = results.some(function(result) {
+        return result.status === 'rejected';
+      });
+  
+      if (hasError) {
+        displayLog('Some files or links failed to load.');
+        loadHeader.innerHTML = "Loading Failed";
+        tryAgainButton.style.display = 'block'; // Show the "Try Again" button
+      } else {
+        displayLog('All files and links loaded successfully.');
+        content.style.display = 'block'; // Show the main content
+        document.getElementById('loading-phase').style.display = 'none'; // Hide the loading phase
+        // You can access the loaded file contents or accessible links here
       }
     });
-
-    try {
-      await Promise.allSettled([...filePromises, ...linkPromises]);
-      displayLog('All files and links loaded successfully.');
-      content.style.display = 'block'; // Show the main content
-      document.getElementById('loading-phase').style.display = 'none'; // Hide the loading phase
-      // You can access the loaded file contents or accessible links here
-    } catch (error) {
-      displayLog('Some files or links failed to load.');
-      loadHeader.textContent = 'Loading Failed';
-      tryAgainButton.style.display = 'block'; // Show the "Try Again" button
-    }
   }
+  
 
   async function loadVideo(file) {
     const url = file.url || file;
