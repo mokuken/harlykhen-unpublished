@@ -317,7 +317,7 @@ var originalContent = spamContent.innerHTML;
 
 spamButton.addEventListener("click", function() {
   if (spamContent.innerHTML === originalContent) {
-    spamContent.innerHTML = "Music: Worth Nothing, By Oliver Tree";
+    spamContent.innerHTML = "Music: Vamp, By fwsatoru";
   } else {
     spamContent.innerHTML = originalContent;
   }
