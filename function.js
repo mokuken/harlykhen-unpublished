@@ -112,26 +112,45 @@ function preloadProjectContent() {
 // /_/   /_/ |_/_____/           /_____/\____/_/  |_/_____/  /_/    \____/_/ |_/\____/  (_) 
 
 window.addEventListener('load', function() {
-  const logs = document.getElementById('logs');
-  const content = document.getElementById('content');
-  const tryAgainButton = document.getElementById('try-again-button');
-  const loadHeader = document.getElementById("loadHeader");
+  var logs = document.getElementById('logs');
+  var content = document.getElementById('content');
+  var tryAgainButton = document.getElementById('try-again-button');
+  var loadHeader = document.getElementById("loadHeader");
 
-  const files = [
+  // Array of files to load
+  var files = [
     { url: '/video/bgv.mp4', type: 'video' },
     { url: '/audio/bgm.mp3', type: 'audio' },
     { url: '/photos/profile.webp', type: 'image' },
-    { url: 'photos/facebook.webp', type: 'image' },
+    { url: '/photos/facebook.webp', type: 'image' },
     { url: '/photos/github.webp', type: 'image' },
     { url: '/photos/linkedin.webp', type: 'image' },
     '/styles.css',
+    '/icon.css',
     // Add more files here
   ];
 
-  const links = [
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
-    // Add more links here
-  ];
+  function loadFile(file) {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', file.url || file, true);
+      xhr.responseType = file.type === 'video' ? 'blob' : '';
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            if (file.type === 'video') {
+              resolve(window.URL.createObjectURL(xhr.response));
+            } else {
+              resolve(xhr.responseText);
+            }
+          } else {
+            reject('Error loading file: ' + (file.url || file));
+          }
+        }
+      };
+      xhr.send();
+    });
+  }
 
   function displayLog(log, file) {
     var logElement = document.createElement('p');
@@ -144,32 +163,9 @@ window.addEventListener('load', function() {
     logs.appendChild(logElement);
     logs.scrollTop = logs.scrollHeight; // Scroll to the bottom
   }
-  
-
-  async function loadFile(file) {
-    const url = file.url || file;
-    try {
-      const response = await fetch(url);
-      if (file.type === 'video') {
-        return window.URL.createObjectURL(await response.blob());
-      } else {
-        return await response.text();
-      }
-    } catch (error) {
-      throw new Error(`Error loading file: ${url}`);
-    }
-  }
-
-  async function loadLink(link) {
-    try {
-      await fetch(link, { method: 'HEAD' });
-    } catch (error) {
-      throw new Error(`Error accessing link: ${link}`);
-    }
-  }
 
   function loadFiles() {
-    displayLog('Loading files and links...');
+    displayLog('Loading files...');
     var filePromises = files.map(function(file) {
       if (file.type === 'video') {
         return loadVideo(file).then(function(response) {
@@ -205,83 +201,70 @@ window.addEventListener('load', function() {
         });
       }
     });
-  
-    var linkPromises = links.map(function(link) {
-      return loadLink(link).then(function() {
-        displayLog('Source Link Loaded', link);
-      }).catch(function(error) {
-        displayLog(error);
-        throw error;
-      });
-    });
-  
-    Promise.allSettled(filePromises.concat(linkPromises)).then(function(results) {
+
+    Promise.allSettled(filePromises).then(function(results) {
       var hasError = results.some(function(result) {
         return result.status === 'rejected';
       });
-  
+
       if (hasError) {
-        displayLog('Some files or links failed to load.');
+        displayLog('Some files failed to load.');
         loadHeader.innerHTML = "Loading Failed";
         tryAgainButton.style.display = 'block'; // Show the "Try Again" button
       } else {
-        displayLog('All files and links loaded successfully.');
+        displayLog('All files loaded successfully.');
         content.style.display = 'block'; // Show the main content
         document.getElementById('loading-phase').style.display = 'none'; // Hide the loading phase
-        // You can access the loaded file contents or accessible links here
+        // You can access the loaded file contents here
       }
     });
   }
-  
 
-  async function loadVideo(file) {
-    const url = file.url || file;
+  function loadVideo(file) {
     return new Promise(function(resolve, reject) {
-      const video = document.createElement('video');
+      var video = document.createElement('video');
       video.preload = 'auto';
       video.onloadeddata = function() {
         resolve(video);
       };
       video.onerror = function() {
-        reject(new Error(`Error loading video: ${url}`));
+        reject('Error loading video: ' + (file.url || file));
       };
-      video.src = url;
+      video.src = file.url || file;
       video.load();
     });
   }
 
-  async function loadAudio(file) {
-    const url = file.url || file;
+  function loadAudio(file) {
     return new Promise(function(resolve, reject) {
-      const audio = new Audio();
+      var audio = new Audio();
       audio.preload = 'auto';
       audio.onloadeddata = function() {
         resolve(audio);
       };
       audio.onerror = function() {
-        reject(new Error(`Error loading audio: ${url}`));
+        reject('Error loading audio: ' + (file.url || file));
       };
-      audio.src = url;
+      audio.src = file.url || file;
       audio.load();
     });
   }
 
-  async function loadImage(file) {
-    const url = file.url || file;
+  function loadImage(file) {
     return new Promise(function(resolve, reject) {
-      const image = new Image();
+      var image = new Image();
       image.onload = function() {
         resolve(image);
       };
       image.onerror = function() {
-        reject(new Error(`Error loading image: ${url}`));
+        reject('Error loading image: ' + (file.url || file));
       };
-      image.src = url;
+      image.src = file.url || file;
     });
   }
 
   function resetLogs() {
-    logs.textContent = '';
+    logs.innerHTML = '';
   }
 
   function resetTryAgainButton() {
@@ -294,12 +277,9 @@ window.addEventListener('load', function() {
     loadFiles();
   }
 
-  function initialize() {
-    loadFiles();
-    tryAgainButton.addEventListener('click', retryLoading);
-  }
+  loadFiles();
 
-  initialize();
+  tryAgainButton.addEventListener('click', retryLoading);
 });
 
 
