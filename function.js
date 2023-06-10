@@ -1,115 +1,10 @@
-//    ____  _   ________            ____  ___   ____________   ________  ___   ________   
-//   / __ \/ | / / ____/           / __ \/   | / ____/ ____/  / ____/ / / / | / / ____/   
-//  / / / /  |/ / __/    ______   / /_/ / /| |/ / __/ __/    / /_  / / / /  |/ / /        
-// / /_/ / /|  / /___   /_____/  / ____/ ___ / /_/ / /___   / __/ / /_/ / /|  / /___   _  
-// \____/_/ |_/_____/           /_/   /_/  |_\____/_____/  /_/    \____/_/ |_/\____/  (_) 
-
-const homePage = document.getElementById("home");
-const aboutPage = document.getElementById("about");
-const projectPage = document.getElementById("project");
-const contactPage = document.getElementById("contacts");
-
-function home() {
-    if (homePage.style.display = "none") {
-        homePage.style.display = "block";
-        aboutPage.style.display = "none";
-        projectPage.style.display = "none";
-        contactPage.style.display = "none";
-    }
-}
-
-function about() {
-  if (aboutPage.style.display = "none") {
-      homePage.style.display = "none";
-      aboutPage.style.display = "block";
-      projectPage.style.display = "none";
-      contactPage.style.display = "none";
-  }
-}
-
-function preloadProjectContent() {
-    // Array of image URLs to preload
-    var projectContent = [
-      "/photos/projects.webp",
-      "/photos/project-2.webp"
-    ];
-  
-    var imagesLoaded = 0;
-    var totalProjectContent = projectContent.length;
-  
-    function imageLoaded() {
-      imagesLoaded++;
-  
-      if (imagesLoaded === totalProjectContent) {
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("project").style.display = "block";
-        document.getElementById("home").style.display = "none";
-        document.getElementById("about").style.display = "none";
-        document.getElementById("contacts").style.display = "none";
-      }
-    }
-  
-    for (var i = 0; i < totalProjectContent; i++) {
-      var img = new Image();
-      img.onload = imageLoaded;
-      img.src = projectContent[i];
-    }
-  }
-  
-  document.getElementById("preloadProject").addEventListener("click", function() {
-    document.getElementById("loading").style.display = "block";
-    document.getElementById("home").style.display = "none";
-    document.getElementById("about").style.display = "none";
-    document.getElementById("project").style.display = "none";
-    document.getElementById("contacts").style.display = "none";
-    preloadProjectContent();
-  });
-  
-
-
-
-  function preloadContactContent() {
-    // Array of image URLs to preload
-    var contactContent = [
-      "/photos/map.webp"
-    ];
-  
-    var imagesLoaded = 0;
-    var totalContactContent = contactContent.length;
-  
-    function imageLoaded() {
-      imagesLoaded++;
-  
-      if (imagesLoaded === totalContactContent) {
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("project").style.display = "none";
-        document.getElementById("home").style.display = "none";
-        document.getElementById("about").style.display = "none";
-        document.getElementById("contacts").style.display = "block";
-      }
-    }
-  
-    for (var i = 0; i < totalContactContent; i++) {
-      var img = new Image();
-      img.onload = imageLoaded;
-      img.src = contactContent[i];
-    }
-  }
-  
-  document.getElementById("preloadContact").addEventListener("click", function() {
-    document.getElementById("loading").style.display = "block";
-    document.getElementById("home").style.display = "none";
-    document.getElementById("about").style.display = "none";
-    document.getElementById("project").style.display = "none";
-    document.getElementById("contacts").style.display = "none";
-    preloadContactContent();
-  });
-
-  //     ____  ____  ______            __    ____  ___    ____     ________  ___   ________   
-//    / __ \/ __ \/ ____/           / /   / __ \/   |  / __ \   / ____/ / / / | / / ____/   
-//   / /_/ / /_/ / __/    ______   / /   / / / / /| | / / / /  / /_  / / / /  |/ / /        
-//  / ____/ _, _/ /___   /_____/  / /___/ /_/ / ___ |/ /_/ /  / __/ / /_/ / /|  / /___   _  
-// /_/   /_/ |_/_____/           /_____/\____/_/  |_/_____/  /_/    \____/_/ |_/\____/  (_) 
+//  _______  ______    _______         ___      _______  _______  ______  
+//  |       ||    _ |  |       |       |   |    |       ||   _   ||      | 
+//  |    _  ||   | ||  |    ___| ____  |   |    |   _   ||  |_|  ||  _    |
+//  |   |_| ||   |_||_ |   |___ |____| |   |    |  | |  ||       || | |   |
+//  |    ___||    __  ||    ___|       |   |___ |  |_|  ||       || |_|   |
+//  |   |    |   |  | ||   |___        |       ||       ||   _   ||       |
+//  |___|    |___|  |_||_______|       |_______||_______||__| |__||______| 
 
 window.addEventListener('load', function() {
   var logs = document.getElementById('logs');
@@ -287,8 +182,126 @@ window.addEventListener('load', function() {
 
 
 
+//  _______  __    _  _______         _______  _______  _______  _______   
+//  |       ||  |  | ||       |       |       ||   _   ||       ||       |  
+//  |   _   ||   |_| ||    ___| ____  |    _  ||  |_|  ||    ___||    ___|  
+//  |  | |  ||       ||   |___ |____| |   |_| ||       ||   | __ |   |___   
+//  |  |_|  ||  _    ||    ___|       |    ___||       ||   ||  ||    ___|  
+//  |       || | |   ||   |___        |   |    |   _   ||   |_| ||   |___   
+//  |_______||_|  |__||_______|       |___|    |__| |__||_______||_______|  
+
+const homePage = document.getElementById("home");
+const aboutPage = document.getElementById("about");
+const projectPage = document.getElementById("project");
+const contactPage = document.getElementById("contacts");
+
+function home() {
+    if (homePage.style.display = "none") {
+        homePage.style.display = "block";
+        aboutPage.style.display = "none";
+        projectPage.style.display = "none";
+        contactPage.style.display = "none";
+    }
+}
+
+function about() {
+  if (aboutPage.style.display = "none") {
+      homePage.style.display = "none";
+      aboutPage.style.display = "block";
+      projectPage.style.display = "none";
+      contactPage.style.display = "none";
+  }
+}
+
+function preloadProjectContent() {
+    // Array of image URLs to preload
+    var projectContent = [
+      "/photos/projects.webp",
+      "/photos/project-2.webp"
+    ];
+  
+    var imagesLoaded = 0;
+    var totalProjectContent = projectContent.length;
+  
+    function imageLoaded() {
+      imagesLoaded++;
+  
+      if (imagesLoaded === totalProjectContent) {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("project").style.display = "block";
+        document.getElementById("home").style.display = "none";
+        document.getElementById("about").style.display = "none";
+        document.getElementById("contacts").style.display = "none";
+      }
+    }
+  
+    for (var i = 0; i < totalProjectContent; i++) {
+      var img = new Image();
+      img.onload = imageLoaded;
+      img.src = projectContent[i];
+    }
+  }
+  
+  document.getElementById("preloadProject").addEventListener("click", function() {
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("home").style.display = "none";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("project").style.display = "none";
+    document.getElementById("contacts").style.display = "none";
+    preloadProjectContent();
+  });
+  
 
 
+
+  function preloadContactContent() {
+    // Array of image URLs to preload
+    var contactContent = [
+      "/photos/map.webp"
+    ];
+  
+    var imagesLoaded = 0;
+    var totalContactContent = contactContent.length;
+  
+    function imageLoaded() {
+      imagesLoaded++;
+  
+      if (imagesLoaded === totalContactContent) {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("project").style.display = "none";
+        document.getElementById("home").style.display = "none";
+        document.getElementById("about").style.display = "none";
+        document.getElementById("contacts").style.display = "block";
+      }
+    }
+  
+    for (var i = 0; i < totalContactContent; i++) {
+      var img = new Image();
+      img.onload = imageLoaded;
+      img.src = contactContent[i];
+    }
+  }
+  
+  document.getElementById("preloadContact").addEventListener("click", function() {
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("home").style.display = "none";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("project").style.display = "none";
+    document.getElementById("contacts").style.display = "none";
+    preloadContactContent();
+  });
+
+
+
+
+
+//  _______  ___      _______  ______    _______         __    _  _______  _______  ___   _______ 
+//  |   _   ||   |    |       ||    _ |  |       |       |  |  | ||       ||       ||   | |       |
+//  |  |_|  ||   |    |    ___||   | ||  |_     _| ____  |   |_| ||   _   ||_     _||   | |    ___|
+//  |       ||   |    |   |___ |   |_||_   |   |  |____| |       ||  | |  |  |   |  |   | |   |___ 
+//  |       ||   |___ |    ___||    __  |  |   |         |  _    ||  |_|  |  |   |  |   | |    ___|
+//  |   _   ||       ||   |___ |   |  | |  |   |         | | |   ||       |  |   |  |   | |   |    
+//  |__| |__||_______||_______||___|  |_|  |___|         |_|  |__||_______|  |___|  |___| |___|    
 
 // The Alert Function
 // Select the target element
