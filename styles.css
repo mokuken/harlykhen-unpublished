@@ -259,7 +259,7 @@ p {
 
   .column2 {
     /* Additional styles for the right column */
-    background-image: url('/photos/map.webp');
+    background-image: url('/harlykhen/photos/map.webp');
     background-size: cover;
     background-position: center;
     opacity: 70%;
