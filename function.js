@@ -14,14 +14,14 @@ window.addEventListener('load', function() {
 
   // Array of files to load
   var files = [
-    { url: '/video/bgv.mp4', type: 'video' },
-    { url: '/audio/bgm.mp3', type: 'audio' },
-    { url: '/photos/profile.webp', type: 'image' },
-    { url: '/photos/facebook.webp', type: 'image' },
-    { url: '/photos/github.webp', type: 'image' },
-    { url: '/photos/linkedin.webp', type: 'image' },
-    '/styles.css',
-    '/icon.css',
+    { url: '/harlykhen/video/bgv.mp4', type: 'video' },
+    { url: '/harlykhen/audio/bgm.mp3', type: 'audio' },
+    { url: '/harlykhen/photos/profile.webp', type: 'image' },
+    { url: '/harlykhen/photos/facebook.webp', type: 'image' },
+    { url: '/harlykhen/photos/github.webp', type: 'image' },
+    { url: '/harlykhen/photos/linkedin.webp', type: 'image' },
+    '/harlykhen/styles.css',
+    '/harlykhen/icon.css',
     // Add more files here
   ];
 
