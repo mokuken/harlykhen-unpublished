@@ -216,8 +216,8 @@ function about() {
 function preloadProjectContent() {
     // Array of image URLs to preload
     var projectContent = [
-      "/photos/projects.webp",
-      "/photos/project-2.webp"
+      "/harlykhen/photos/projects.webp",
+      "/harlykhen/photos/project-2.webp"
     ];
   
     var imagesLoaded = 0;
@@ -257,7 +257,7 @@ function preloadProjectContent() {
   function preloadContactContent() {
     // Array of image URLs to preload
     var contactContent = [
-      "/photos/map.webp"
+      "/harlykhen/photos/map.webp"
     ];
   
     var imagesLoaded = 0;
