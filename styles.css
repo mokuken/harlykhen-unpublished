@@ -118,7 +118,7 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   border-right: 3px solid black;
-  background-image: url('/photos/side-bg.webp');
+  background-image: url('/harlykhen/photos/side-bg.webp');
   animation: slideRight 1s ease-in-out forwards;
 }
 
