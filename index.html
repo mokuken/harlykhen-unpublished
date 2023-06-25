@@ -1,183 +1,250 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Harly Khen's Website</title>
-    <meta name="description" content="Harly Khen's Personal Website">
-    <meta name="author" content="Harly Khen Quimelat">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/harlykhen/styles.css">
-    <link rel="stylesheet" type="text/css" href="/harlykhen/icon.css">
+    <meta name="description" content="Harly Khen's Personal Website" />
+    <meta name="author" content="Harly Khen Quimelat" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/harlykhen/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <script defer src="/harlykhen/function.js"></script>
-</head>
-<body>
-
-  <div id="loading-phase">
-    <h1 id="loadHeader">Loading Files</h1>
-    <div id="logs"><p>Transfering Data from Github</p></div>
-    <button id="try-again-button" style="display: none;">Try Again</button>
-  </div>
-
-  <div id="content" style="height: 100%;display: none;">
-    <div id="alertBox" class="alert-box">
-      Welcome to my Website!
+  </head>
+  <body>
+    <div id="loading-phase">
+      <h1 id="loadHeader">Loading Files</h1>
+      <div id="logs"><p>Transfering Data from Github</p></div>
+      <button id="try-again-button" style="display: none">Try Again</button>
     </div>
-    <div id="loading" class="content" style="height: 100%;display: none;">
-      <div class="home" style="height: 100%;">
-        <span class="loader"></span>
-      </div>
-    </div>
-  
+
     <video id="bg-video" autoplay loop muted>
-      <source src="/harlykhen/video/bgv.mp4">
+      <source src="/harlykhen/video/bgv.mp4" />
     </video>
-  
-    <div id="sidebar">
-      <ul class="icon-list">
-        <li onclick="home()"><i class="fas fa-home"></i> Home</li>
-        <li onclick="about()"><i class="fas fa-info-circle"></i> About</li>
-        <li id="preloadProject"><i class="fas fa-folder-open"></i> Project</li>
-        <li id="preloadContact"><i class="fas fa-envelope"></i> Contact</li>
-      </ul>
-    </div>
-      
-    <div id="home" class="content" style="height: 100%;">
-      <div id="spamButton" class="music">
-        <i class="fas fa-music music-icon"></i>
-        <span id="spamContent" class="tooltip">Muted</span>
-        <audio id="myAudio" src="/harlykhen/audio/bgm.mp3" loop></audio>
-      </div>      
-      
-      <div class="home" style="height: 100%;">
-        <div class="container">
-          <img src="/harlykhen/photos/profile.webp" alt="Image" class="image">
-          <div class="text">
-            <h3 style="color: rgb(105, 105, 105);">hello there i am</h3>
-            <h1 style="font-size: 50px;margin-bottom: 0px;">HARLY KHEN QUIMELAT</h1>
-            <h3 style="color: rgb(105, 105, 105);">a <a style="color: white;">computer science student</a> and aspiring <a style="color: white;">software engineer!</a></h3>
-            <br>
-            <div class="skillBox">
-              <div class="skillColumn">
-                <i class="fab fa-html5"></i>
-              </div>
-              <div class="skillColumn">
-                <i class="fab fa-css3"></i>
-              </div>
-              <div class="skillColumn">
-                <i class="fab fa-js"></i>
-              </div>
-              <div class="skillColumn">
-                <i class="fas fa-database"></i>
-              </div>
-              <div class="skillColumn">
-                <i class="fa-brands fa-git-alt"></i>
-              </div>
-              <div class="skillColumn">
-                <i class="fab fa-linux"></i>
-              </div>
-              <div class="skillColumn">
-                <i class="fab fa-java"></i>
-              </div>
+
+    <audio id="myAudio" src="/harlykhen/audio/bgm.mp3" loop></audio>
+
+    <div id="main-content" class="container">
+      <div id="alertBox" class="alert-box">Welcome to my Website!</div>
+
+      <div class="sidebar">
+        <a class="nav" onclick="home()"><i class="fas fa-home"></i> Home</a>
+        <a class="nav" onclick="about()"
+          ><i class="fas fa-info-circle"></i> About</a
+        >
+        <a class="nav" onclick="project()"
+          ><i class="fas fa-folder-open"></i> Project</a
+        >
+        <a class="nav" onclick="contact()"
+          ><i class="fas fa-envelope"></i> Contact</a
+        >
+        <div id="player" class="music-container">
+          <div class="art">
+            <img class="image" src="/harlykhen/audio/bgm-thumbnail.png" />
+            <div class="overlay_box">
+              <div id="bar1" class="bar"></div>
+              <div id="bar2" class="bar"></div>
+              <div id="bar3" class="bar"></div>
             </div>
-         </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="about" class="content" style="height: 100%;display: none;">
-      <h3 id="portfolio" style="color: rgb(105, 105, 105);">wanna learn more about me</h3>
-      <h1 style="font-size: 50px;margin-bottom: 0px;">
-        <span>ABOUT</span>
-      </h1>
-      <br>
-      <h4 style="color: rgb(105, 105, 105);">
-        i love learning programming, read books, anime, hacking, play games, <br>
-        edit videos/image and most importantly is being alone.
-      </h4>
-      <br>
-      <br>
-      <h3 id="portfolio">MY COMPUTER SKILLS</h3>
-      <ul class="skills">
-        <div class="column">
-          <li class="skill"><i class="fab fa-html5"></i> HTML</li>
-          <li class="skill"><i class="fab fa-css3-alt"></i> CSS</li>
-          <li class="skill"><i class="fab fa-js"></i> JavaScript</li>
-        </div>
-        <div class="column">
-          <li class="skill"><i class="fa-brands fa-git-alt"></i> Git</li>
-          <li class="skill"><i class="fas fa-database"></i> MySQL</li>
-          <li class="skill"><i class="fab fa-java"></i> Java</li>
-        </div>
-        <div class="column">
-
-          <li class="skill"><i class="fab fa-linux"></i> Linux Command Line</li>
-          <li class="skill"><i class="fas fa-image"></i> Image Editing</li>
-          <li class="skill"><i class="fas fa-video"></i> Video Editing</li>
-        </div>
-      </ul>
-    </div>
-  
-    <div id="project" class="content" style="display: none;">
-      <h3 id="portfolio" style="color: rgb(105, 105, 105);">some of my recent works</h3>
-      <h1 style="font-size: 50px;margin-bottom: 0px;">
-        <span>PROJECTS</span>
-      </h1>
-      <div class="projCont">
-        <div class="card">
-          <img src="/harlykhen/photos/projects.webp" alt="Project Image">
-          <h3>Dynamic Window Manager (DWM)</h3>
-          <p>My patched version of suckless dynamic window manage.</p>
-        </div>
-        <div class="card">
-          <img src="/harlykhen/photos/project-2.webp" alt="Project Image">
-          <h3>Lost Dream Game</h3>
-          <p>A game that i made based on the things i remember to my dreams. </p>
-        </div>
-        <div class="card">
-          <img src="/harlykhen/photos/projects.webp" style="opacity: 0%;" alt="Project Image">
-          <h3>Empty</h3>
-          <p>Nothing its Empty</p>
-        </div>
-      </div>
-    </div>
-  
-    
-  
-  
-  
-  
-    <div id="contacts" class="content" style="display: none;padding: 0px;overflow-y: hidden;">
-      <div class="grid-container">
-        <div class="column1">
-          <h3 id="portfolio" style="color: rgb(105, 105, 105);">want to get in touch</h3>
-          <h1 style="font-size: 50px;margin-bottom: 0px;">
-            <span>CONTACT</span>
-          </h1><br>
-          <div class="input-wrapper">
-            <button style="margin-bottom: 50px;margin-right: 10px;">
-              <img src="/harlykhen/photos/github.webp" style="width: 100%; padding: 10px 30px 10px 30px">
-              Github
-            </button>
-            <button style="margin-bottom: 50px;margin-right: 10px;">
-              <img src="/harlykhen/photos/linkedin.webp" style="width: 100%; padding: 10px 30px 10px 30px">
-              Linkdin
-            </button>
-            <button style="margin-bottom: 50px;">
-              <img src="/harlykhen/photos/facebook.webp" style="width: 100%; padding: 10px 30px 10px 30px">
-              Facebook
-            </button>
           </div>
-          <div class="input-wrapper" style=" display: flex;">
-            <input class="input" style="margin-bottom: 10px;margin-right: 10px;" type="text" id="my-text-field" name="name" placeholder="USERNAME">
-            <input class="input" style="margin-bottom: 10px;" type="text" id="my-text-field" name="name" placeholder="EMAIL">
+          <div class="music-detail">
+            <div class="title">Vamp</div>
+            <div class="artist">fwsatoru</div>
           </div>
-          <input class="input" style="margin-bottom: 10px;" type="text" id="my-text-field" name="name" placeholder="SUBJECT">
-          <textarea class="input" style="height: 300px;" name="message" placeholder="MESSAGE"></textarea>
         </div>
-        <div class="column2"></div>
+      </div>
+
+      <div id="home" class="content-container">
+        <img class="profile" src="/harlykhen/photos/profile.webp" alt="Image" />
+        <div class="text">
+          <h3 style="color: rgb(105, 105, 105)">hello there i am</h3>
+          <h1>HARLY KHEN QUIMELAT</h1>
+          <h3 style="color: rgb(105, 105, 105); margin-bottom: 0">
+            a <a style="color: white">computer science student</a> and aspiring
+            <a style="color: white">software engineer!</a>
+          </h3>
+          <br />
+          <div class="skillBox">
+            <div class="skillColumn">
+              <i class="fab fa-html5"></i>
+            </div>
+            <div class="skillColumn">
+              <i class="fab fa-css3"></i>
+            </div>
+            <div class="skillColumn">
+              <i class="fab fa-js"></i>
+            </div>
+            <div class="skillColumn">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="skillColumn">
+              <i class="fa-brands fa-git-alt"></i>
+            </div>
+            <div class="skillColumn">
+              <i class="fab fa-linux"></i>
+            </div>
+            <div class="skillColumn">
+              <i class="fab fa-java"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="about" class="content-container">
+        <h3 style="color: rgb(105, 105, 105)">wanna learn more about me</h3>
+        <h1 style="font-size: 50px; margin-bottom: -20px; margin-top: -20px">
+          <span>ABOUT</span>
+        </h1>
+        <br />
+        <h4
+          style="
+            border: var(--border-color);
+            background-color: var(--first-color);
+            padding: 15px;
+            text-align: center;
+            margin: 10px;
+          "
+        >
+          i love learning programming, read books, anime, hacking, play games,
+          edit videos/image and most importantly is being alone.
+        </h4>
+        <h3>MY COMPUTER SKILLS</h3>
+        <div class="column">
+          <li><i class="fab fa-html5"></i> Hypertext Markup Language</li>
+          <li><i class="fab fa-css3-alt"></i> Cascading Style Sheets</li>
+          <li><i class="fab fa-js"></i> JavaScript</li>
+        </div>
+        <div class="column">
+          <li><i class="fa-brands fa-git-alt"></i> Git</li>
+          <li><i class="fas fa-database"></i> MySQL</li>
+          <li><i class="fab fa-java"></i> Java</li>
+        </div>
+        <div class="column">
+          <li><i class="fab fa-linux"></i> Linux Command Line</li>
+          <li><i class="fas fa-image"></i> Image Editing</li>
+          <li><i class="fas fa-video"></i> Video Editing</li>
+        </div>
+      </div>
+
+      <div id="project" class="content-container">
+        <h3 style="color: rgb(105, 105, 105)">some of my recent works</h3>
+        <h1 style="font-size: 50px; margin-bottom: -20px; margin-top: -20px">
+          <span>PROJECTS</span>
+        </h1>
+        <br />
+        <div class="projCont">
+          <div class="card">
+            <img src="/harlykhen/photos/projects.webp" alt="Project Image" />
+            <h3>Dynamic Window Manager (DWM)</h3>
+            <p>My patched version of suckless dynamic window manage.</p>
+          </div>
+          <div class="card">
+            <img src="/harlykhen/photos/project-2.webp" alt="Project Image" />
+            <h3>Lost Dream Game</h3>
+            <p>
+              A game that i made based on the things i remember to my dreams.
+            </p>
+          </div>
+          <div class="card">
+            <img
+              src="/harlykhen/photos/projects.webp"
+              style="opacity: 0%"
+              alt="Project Image"
+            />
+            <h3>Empty</h3>
+            <p>Nothing its Empty</p>
+          </div>
+        </div>
+        <div class="projCont">
+          <div class="card">
+            <img
+              src="/harlykhen/photos/projects.webp"
+              style="opacity: 0%"
+              alt="Project Image"
+            />
+            <h3>Empty</h3>
+            <p>Nothing its Empty</p>
+          </div>
+          <div class="card">
+            <img
+              src="/harlykhen/photos/projects.webp"
+              style="opacity: 0%"
+              alt="Project Image"
+            />
+            <h3>Empty</h3>
+            <p>Nothing its Empty</p>
+          </div>
+          <div class="card">
+            <img
+              src="/harlykhen/photos/projects.webp"
+              style="opacity: 0%"
+              alt="Project Image"
+            />
+            <h3>Empty</h3>
+            <p>Nothing its Empty</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="contact" class="content-container">
+        <div class="cont-tainer">
+          <div class="con-column">
+            <h3 style="color: rgb(105, 105, 105)">want to get in touch</h3>
+            <h1
+              style="font-size: 50px; margin-bottom: -20px; margin-top: -20px"
+            >
+              <span>CONTACT</span>
+            </h1>
+            <br />
+            <div class="box">
+              <i class="fa-solid fa-envelope"></i>
+              Email: harlykhen@gmail.com
+              <a style="float: right">Copy</a>
+            </div>
+            <div class="box">
+              <i class="fa-brands fa-github-alt"></i> Github: mokuken
+              <a href="www.github.com/mokuken" style="float: right">Visit</a>
+            </div>
+            <div class="box">
+              <i class="fa-brands fa-facebook"></i> Facebook: Harly Khen V.
+              Quimelat
+              <a
+                href="https://m.facebook.com/people/Harly-Khen-V-Quimelat/100034130554707/?comment_id=Y29tbWVudDoxMTUwODQyMTM1NzY0MjhfMTE2NDQwMjYzNDQwODIz"
+                style="float: right"
+                >Visit</a
+              >
+            </div>
+            <div class="box">
+              <i class="fa-brands fa-linkedin"></i> Linkdin: Not registered Yet
+              <a style="float: right">Visit</a>
+            </div>
+          </div>
+          <div
+            class="con-column"
+            style="
+              border: var(--border-color);
+              background-color: var(--first-color);
+              height: 100%;
+              margin: 10px;
+            "
+          >
+            <iframe
+              class="cbox"
+              name="cbox"
+              src="https://my.cbox.ws/harly-chatbox"
+              allowtransparency=" yes"
+              marginheight="0"
+              marginwidth="0"
+              scrolling="auto"
+              loading="lazy"
+              width="100%"
+              height="100%"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
-          <!-- <h1 id="portfolio">Portfolio</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit risus ut urna semper, at lacinia ex fringilla. Quisque cursus, ipsum et gravida tristique, erat lacus sodales lacus, ut posuere odio felis vitae ligula.</p> -->
-  </div>
-</body>
+  </body>
 </html>

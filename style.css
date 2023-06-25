@@ -1,0 +1,349 @@
+:root {
+  --first-color: #1e2122;
+  --second-color: #141616;
+  --border-color: 3px solid black;
+}
+
+@font-face {
+  font-family: MyFont;
+  src: url(/harlykhen/fonts/futura-medium/futura-medium.otf);
+}
+
+/* CSS for the page layout */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: MyFont;
+  color: white;
+  letter-spacing: 1.5px;
+}
+
+body {
+  background-color: var(--second-color);
+}
+
+#loading-phase {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--first-color);
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#logs {
+  margin-top: 10px;
+  font-family: monospace;
+  background-color: var(--second-color);
+  border: var(--border-color);
+  padding: 15px;
+  width: 40%;
+  height: 400px; /* Set the maximum height for the log box */
+  overflow-y: scroll; /* Enable vertical scrolling when needed */
+}
+
+#try-again-button {
+  border: var(--border-color);
+  background-color: transparent;
+  color: white;
+  margin: 15px;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 3.5px;
+}
+
+#bg-video {
+  opacity: 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  animation: fadeInBackground 3s;
+}
+
+/* CSS for the container */
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.alert-box {
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 20px; /* initial position outside the viewport */
+  background-color: #262a2b;
+  border: 3px solid black;
+  color: white;
+  opacity: 0;
+  padding: 15px 20px;
+}
+
+.alert-box.show {
+  right: 20px; /* target position */
+  animation: alertFade 5s ease;
+}
+
+@keyframes alertFade {
+  0% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  20%,
+  30%,
+  50%,
+  60%,
+  70%,
+  80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    display: none; /* hide after animation */
+    transform: translateX(120%);
+  }
+}
+
+/* CSS for the sidebar */
+.sidebar {
+  border-right: var(--border-color);
+  width: 230px;
+  background-color: var(--first-color);
+  padding: 10px;
+}
+
+.sidebar a {
+  border: var(--border-color);
+  padding: 15px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* CSS for the content container */
+.content-container {
+  flex: 1;
+  padding: 70px;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* CSS for the image */
+.content-container .profile {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+  border: var(--border-color);
+  background-color: var(--first-color);
+}
+
+/* CSS for the text */
+.content-container .text {
+  margin: 0;
+}
+
+.content-container .text h1 {
+  font-size: 50px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+
+#main-content {
+  display: none;
+}
+
+#home {
+  display: flex;
+}
+
+#about {
+  display: none;
+  padding-top: 20px;
+}
+
+#project {
+  display: none;
+  padding-top: 20px;
+}
+
+#contact {
+  display: none;
+  padding-top: 20px;
+}
+
+.column {
+  float: left;
+}
+
+.column li {
+  float: left;
+  list-style-type: none;
+  border: var(--border-color);
+  background-color: var(--first-color);
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.projCont {
+  display: flex;
+}
+
+.card {
+  width: 300px;
+  padding: 20px;
+  margin: 10px;
+  background-color: var(--first-color);
+  align-items: center;
+  border: var(--border-color);
+}
+
+.card img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.card p {
+  color: rgb(105, 105, 105);
+  font-size: 14px;
+}
+
+/* CSS for the navigation links in the sidebar */
+.sidebar a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* CSS for the active link in the sidebar */
+.nav {
+  font-weight: normal;
+}
+
+.nav.active {
+  font-weight: bold;
+  background-color: var(--second-color);
+}
+
+.skillBox {
+  display: flex;
+}
+
+/* Style the individual columns */
+.skillColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Style the icons */
+.skillColumn i {
+  font-size: 25px;
+  color: white;
+}
+
+.skillColumn:hover i {
+  transform: translateY(20%);
+}
+
+.cont-tainer {
+  display: flex;
+  max-height: 100vh;
+  height: 100%;
+}
+
+.con-column {
+  flex: 1;
+}
+
+.box {
+  border: var(--border-color);
+  background-color: var(--first-color);
+  padding: 15px;
+  margin: 10px;
+}
+
+.music-container {
+  background-color: var(--first-color);
+  border: var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.music-container.active {
+  font-weight: bold;
+  background-color: var(--second-color);
+}
+
+.art {
+  height: 50px;
+  width: 150px;
+  position: relative;
+  border: var(--border-color);
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+}
+.music-detail {
+  width: 320px;
+  margin-left: 15px;
+}
+.artist {
+  color: grey;
+}
+.overlay_box {
+  position: absolute;
+  inset: 0 0 0 0;
+  border-radius: 8px;
+  background-color: #00000055;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bar {
+  width: 5px;
+  height: 10px;
+  background-color: white;
+  margin: 2.5px;
+  border-radius: 6px;
+}
+
+.bar.active {
+  animation: bar 1400ms infinite;
+}
+
+.bar:nth-child(even) {
+  animation-delay: 700ms;
+}
+@keyframes bar {
+  0% {
+    height: 10px;
+  }
+  50% {
+    height: 20px;
+  }
+  100% {
+    height: 10px;
+  }
+}
