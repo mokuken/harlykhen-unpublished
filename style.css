@@ -279,6 +279,11 @@ body {
   margin: 10px;
 }
 
+.box a {
+  color: white;
+  text-decoration: none;
+}
+
 .music-container {
   background-color: var(--first-color);
   border: var(--border-color);
