@@ -274,6 +274,8 @@ function showAlert() {
 }
 
 var playerButton = document.getElementById("player");
+var playIndicator = document.getElementById("play");
+var music = document.getElementById("music-name");
 var barAnim1 = document.getElementById("bar1");
 var barAnim2 = document.getElementById("bar2");
 var barAnim3 = document.getElementById("bar3");
@@ -286,11 +288,15 @@ playerButton.addEventListener("click", function () {
     barAnim2.classList.add("active");
     barAnim3.classList.add("active");
     playerButton.classList.add("active");
+    playIndicator.style.display = "none";
+    music.style.display = "block";
   } else {
     audio.pause();
     barAnim1.classList.remove("active");
     barAnim2.classList.remove("active");
     barAnim3.classList.remove("active");
     playerButton.classList.remove("active");
+    playIndicator.style.display = "block";
+    music.style.display = "none";
   }
 });
