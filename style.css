@@ -198,7 +198,7 @@ body {
 }
 
 .card {
-  width: 300px;
+  width: 100%;
   padding: 20px;
   margin: 10px;
   background-color: var(--first-color);
